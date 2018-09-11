@@ -1,0 +1,44 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+	margin:0;
+	padding:0;
+}
+ul li {
+	list-style:none;
+	float:left;
+	margin-right:20px;
+	line-height:30px;
+}
+h1 {
+	display:block;
+	width:100%;
+	line-height:70px;
+	padding-left:20px;
+	color:#fff;
+	background-color:#666;
+}
+.wrap {
+	width:100%;
+	height:100px;
+	border-bottom:1px solid #CCC;
+	}
+h3 {
+	float:left;
+	width:80px;
+	line-height:100px;
+	text-align:center;
+	padding:0 10px 0 10px;
+	margin-right:10px;
+	background-color:#999;
+}
+p {
+	line-height:30px;
+	display:inline;
+}
+span {
+	font-weight:700;
+}
+h4 {
+	display:inline;
+}

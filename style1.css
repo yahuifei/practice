@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+	margin:0;
+	padding:0;
+}
+ul {
+	overflow:auto;
+}
+ul li{
+    list-style:none;
+	float:left;
+	margin-right:20px;
+	line-height:30px;
+}
+span {
+	font-weight:700;
+}
+h1 {
+    float:left;
+	width:100px;
+	height:600px;
+	padding-top:20px;
+	background-color:#03F;
+	text-align:center;
+	font-weight:700;
+	color:#fff;
+}
+h3 {
+	line-height:50px;
+}
+p {
+	line-height:30px;
+}
+.content {
+    float:left;
+	margin-left:20px;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+	.show{
+		width:490px;
+		height:170px;
+		position:relative;}
+	.con{
+		position:absolute;
+		width:2450px;
+	}
+	a{
+		display:none;
+		float:left;}
+	.dis{
+		display:block;}
+	.dex{
+		position:absolute;
+		left:150px;
+		bottom:5px;}
+	.dex span{
+		display:block;
+		float:left;
+		width:30px;
+		height:20px;
+		background-color:#9F0;
+		margin:0 2px;
+		text-align:center;}
+	.h{
+		background-color:#990 !important;}
+</style>
+</head>
+
+<body>
+<div class="show">
+	<div class="con" left='0px'>
+		<a class="dis"><img src="img/1.jpg"></a>
+    	<a><img src="img/2.jpg"></a>
+    	<a><img src="img/3.jpg"></a>
+    	<a><img src="img/4.jpg"></a>
+   	 	<a><img src="img/5.jpg"></a>
+	</div>
+    <div class="dex">
+		<span>1</span>
+		<span>2</span>
+		<span>3</span>
+		<span>4</span>
+		<span>5</span>
+    </div>
+</div>
+<script>
+	window.onload = function(){
+		var con = document.getElementsByClassName('con');
+		var img = document.getElementsByTagName('a');
+		var show = document.getElementsByClassName('show');
+		var span = document.getElementsByTagName('span');
+		var timer = null;
+		var index = 0;
+		
+		for(var i = 0; i < 5; i++){
+			span[i].id = i;
+			img[i].onmouseover = function(){
+				clearInterval(timer);	
+			};
+			img[i].onmouseout = function(){
+				auto();
+			};
+			span[i].onmouseover = function(){
+				clearInterval(timer);
+				change(this.id);		
+			};	
+		}
+		function auto(){
+			timer = setInterval(function(){
+				change(index);
+				index++;
+				if(index >= 5){
+					index = 0;	
+				}	
+			},1000);	
+		}
+		if(timer){
+			clearInterval(timer);
+			timer = null;	
+		}
+		auto();
+		function change(curIndex){
+			con[0].style.left += curIndex * (-490) + 'px';
+			for(var i = 0; i < 5; i++){
+				img[i].classList.remove('dis');
+				span[i].classList.remove('h');	
+			}
+			img[curIndex].classList.add('dis');
+			span[curIndex].classList.add('h');
+			index = curIndex;	
+		}	
+	};
+</script>
+</body>
+</html>

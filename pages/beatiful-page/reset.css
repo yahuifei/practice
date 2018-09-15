@@ -1,0 +1,35 @@
+body,ul,ol,dl,li,dd,dt,div,p,a,input,textarea,h1,h2,h3,h4,h5,h6{
+	margin:0;
+	padding:0;
+	font-family:"Montserrat","Microsoft YaHei","微软雅黑",sans-serif;
+}
+input,select,textarea,img{
+	border:none;
+	outline:none;
+	background:none;
+}
+a{
+	text-decoration:none;
+}
+a,img,span,input,h3,i{
+	display:inline-block;
+}
+ul,ol,li{
+	list-style:none;
+}
+.fl {
+	float: left;
+} 
+.fr {
+	float: right;
+}
+.clearfloat{
+	zoom:1;
+}
+.clearfloat:after{
+	content:'';
+	display:block;
+	clear:both;
+	overflow:hidden;
+	height:0;
+}

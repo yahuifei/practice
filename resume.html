@@ -2,11 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>第一份简历</title>
+<title>无标题文档</title>
 <link rel="stylesheet" href="style2.css">
 </head>
 
 <body>
+<p id="greet"></p>
 <h1>简历</h1>
 <div class="content">
     <div class="wrap">
@@ -48,5 +49,22 @@
     </div>
 </div>
 
+<script>
+    window.onload = function () {
+        var greet = document.getElementById("greet");
+        var myDate = new Date();
+        var week = ["周日","周一","周二","周三","周四","周五","周六"];
+        
+        if (myDate.getHours() >= 5 && myDate.getHours() <= 11){
+            greet.innerHTML = week[myDate.getDay()] + "早上好";
+        }else if (myDate.getHours() > 11 && myDate.getHours() <= 13){
+            greet.innerHTML = week[myDate.getDay()] + "中午好";
+        }else if (myDate.getHours() > 13 && myDate.getHours() <= 18){
+            greet.innerHTML = week[myDate.getDay()] + "下午好";
+        }else {
+            greet.innerHTML = week[myDate.getDay()] + "晚上好";
+        }
+    };
+</script>
 </body>
 </html>

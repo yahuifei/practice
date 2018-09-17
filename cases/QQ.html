@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>QQ面板</title>
+  <style>
+	#wrap{
+		width:300px;
+		height:200px;
+		background-color:#00cccc;
+		position:absolute;
+		left:50%;
+		top:20%;
+	}
+	#tit{
+		width:150px;
+		height:30px;
+		background-color:#ff99cc;
+		margin:0 auto;
+	}
+	#status{
+		width:100px;
+		margin:0 auto;
+	}
+	#now{
+		color:#330033;
+		cursor:pointer;
+	}
+	
+	ul{
+		display:none;
+		margin:0;
+		padding:0;
+		list-style:none;
+		background-color:#fff;
+	}
+	ul li{
+		cursor:pointer;
+	}
+	ul li:hover{
+		background-color:#838383;
+	}
+	i{
+		display:inline-block;
+	}
+	.show_icn{
+		width:10px;
+		height:10px;
+	}
+	.i1{
+		background-color:#99ff33;
+	}
+	.i2{
+		background-color:#330000;
+	}
+	.i3{
+		background-color:#ffff00;
+	}
+	.i4{
+		background-color:#ff0033;
+	}
+	.i5{
+		background-color:#660000;
+	}
+  </style>
+ </head>
+ <body>
+  <div id='wrap'>
+	<div id='tit'></div>
+	<div id='status'>
+		<div id='now'><i class = 'show_icn i1'></i><span class = 'show_text' id='show_text'>在线</span></div>
+		<ul id='sta-list'>
+			<li><i class = 'show_icn i1' id = 'i1'></i><span class = 'show_text'>在线</span></li>
+			<li><i class = 'show_icn i2' id = 'i2'></i><span class = 'show_text'>隐身神</span></li>
+			<li><i class = 'show_icn i3' id = 'i3'></i><span class = 'show_text'>迎神</span></li>
+			<li><i class = 'show_icn i4' id = 'i4'></i><span class = 'show_text'>隐身</span></li>
+			<li><i class = 'show_icn i5' id = 'i5'></i><span class = 'show_text'>呵呵呵</span></li>
+		</ul>
+	</div>
+  </div>
+
+  <script type='text/javascript'>
+	window.onload = function(){
+		var wrap = document.getElementById('wrap'),
+		 	tit = document.getElementById('tit'),
+			now = document.getElementById('now'),
+			list = document.getElementById('sta-list'),
+			show_text = document.getElementById('show_text');
+		tit.onmousedown = function(e){
+		 	var x = e.clientX - wrap.offsetLeft,//相对视口的位置
+		 		y = e.clientY - wrap.offsetTop;
+		 	console.log(x);
+		 	document.onmousemove = function(e){
+				var x1 = e.clientX - x,
+					y1 = e.clientY - y,
+					maxmX = window.innerWidth - wrap.offsetWidth,//浏览器视口宽高
+					maxmY = window.innerHeight - wrap.offsetHeight;
+					console.log(maxmY);
+				if(x1 <= 0){
+					wrap.style.left = 0 + 'px';
+				}else if(x1 >= maxmX){
+					wrap.style.left = maxmX + 'px';
+				}else{
+					wrap.style.left = x1 + 'px';
+				} 
+				if(y1 <= 0){
+					wrap.style.top = 0 + 'px';
+				}else if(y1 >= maxmY){
+					wrap.style.top = maxmY + 'px';
+				}else{
+		 			wrap.style.top = y1 + 'px';
+				}
+		 		
+		 	};
+		 };
+		document.onmouseup = function(e){
+			document.onmousemove = null;
+		};
+		now.onclick = function(e){
+			e.stopPropagation();
+			list.style.display = 'block';
+			list.addEventListener('click',function(e){//事件监听、事件委托
+				var target = e.target || e.srcElement;
+				if (target.nodeName != 'LI')
+				{
+					target = target.parentNode;
+				}
+				console.log(target);
+				/*var id = target.getElementsByClassName('show_icn')[0].getAttribute('id');
+				var icn = now.getElementsByTagName('i')[0];
+				icn.className = '';
+				icn.className = 'show_icn ' + id;*/
+				var icn = now.getElementsByTagName('i')[0];
+				icn.style.width = 0;
+				show_text.innerHTML = target.innerHTML;
+				list.style.display = 'none';
+			})
+
+		};
+		document.onclick = function(){
+			list.style.display = 'none';
+		};
+	};
+  </script>
+ </body>
+</html>
